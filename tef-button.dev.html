@@ -1,0 +1,17 @@
+<link rel="import" href="bower_components/polymer/polymer.html">
+
+<polymer-element name="tef-button" attributes ="label size type">
+    <template>
+	    <link rel="stylesheet"  href="bower_components/buttons/css/buttons.min.css">
+		<button class ="tef-button {{size}} {{type}}">
+		    {{label}}
+		</button>
+	</template>
+	<script>		
+		Polymer({			
+			label: "Button",
+			size: "",
+			type: ""
+		});
+	</script>	
+</polymer-element>
