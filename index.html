@@ -2,6 +2,7 @@
 <meta http-equiv="Content-type" content="text/html;charset=UTF-8">
 <html>
     <head>
+        <script type="text/javascript" src="bower_components/webcomponentsjs/webcomponents.js"></script>
         <link rel="import" href="tef-button.dev.html">            
         <style>
           body {
@@ -21,7 +22,7 @@
             font-size: 12px;
           }
           style {
-            display: block;
+            display: block !important;
             white-space: pre;
             margin-left: -65px;
             line-height: 25px;
@@ -93,6 +94,19 @@
        <tef-button size="small" type="significant" label="Small"></tef-button>
        <tef-button type="significant" label="Default"></tef-button>
        <tef-button size="large" type="significant" label="Large"></tef-button>
+          </style>
+        </code>
+        <h2>Toggle</h2>
+        <div>
+           <tef-button toggle size="small" label="Small"></tef-button>
+           <tef-button toggle label="Default"></tef-button>
+           <tef-button toggle size="large" label="Large"></tef-button>
+        </div>
+        <code>
+          <style>
+       <tef-button toggle size="small" label="Small"></tef-button>
+       <tef-button toggle label="Default"></tef-button>
+       <tef-button toggle size="large" label="Large"></tef-button>
           </style>
         </code>
     </body>

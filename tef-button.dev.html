@@ -1,17 +1,52 @@
 <link rel="import" href="bower_components/polymer/polymer.html">
 
-<polymer-element name="tef-button" attributes ="label size type">
+<polymer-element name="tef-button" on-click="{{onClick}}" attributes ="label size type toggle active disabled">
     <template>
 	    <link rel="stylesheet"  href="bower_components/buttons/css/buttons.min.css">
-		<button class ="tef-button {{size}} {{type}}">
+		<button id="button" class ="tef-button {{size}} {{type}}">
 		    {{label}}
 		</button>
 	</template>
-	<script>		
+	<script>
+		function hasClass(ele,cls) {
+			return ele.className.match(new RegExp('(\\s|^)'+cls+'(\\s|$)'));
+		}
+		 
+		function addClass(ele,cls) {
+			if (!this.hasClass(ele,cls)) ele.className += " "+cls;
+		}
+		 
+		function removeClass(ele,cls) {
+			if (hasClass(ele,cls)) {
+		    	var reg = new RegExp('(\\s|^)'+cls+'(\\s|$)');
+				ele.className=ele.className.replace(reg,' ');
+			}
+		}
 		Polymer({			
 			label: "Button",
 			size: "",
-			type: ""
+			type: "",
+			toggle: false,
+			active: false,
+			disabled: false,
+			onClick: function(){
+				if (this.toggle){
+					var button = this.$.button;					
+					
+					if (!this.active){						
+						addClass(button, "active");
+						this.active = true;
+						this.fire("activated");
+					}else{
+						removeClass(button, "active")
+						this.active = false;
+						this.fire("deactivated");
+					}
+				}else{
+					this.fire("clicked");//Could be pressed
+				}
+			}
+
 		});
 	</script>	
 </polymer-element>
