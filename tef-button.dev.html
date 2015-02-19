@@ -2,7 +2,7 @@
 
 <polymer-element name="tef-button" on-click="{{onClick}}" attributes ="label size type toggle active disabled">
     <template>
-	    <link rel="stylesheet"  href="bower_components/buttons/css/buttons.min.css">
+	    <link rel="stylesheet" href="bower_components/buttons/css/buttons.min.css">
 		<button id="button" class ="tef-button {{size}} {{type}}">
 		    {{label}}
 		</button>
@@ -18,17 +18,28 @@
 		 
 		function removeClass(ele,cls) {
 			if (hasClass(ele,cls)) {
-		    	var reg = new RegExp('(\\s|^)'+cls+'(\\s|$)');
+		    	var reg = new RegExp(' (\\s|^)'+cls+'(\\s|$)');
 				ele.className=ele.className.replace(reg,' ');
 			}
 		}
 		Polymer({			
 			label: "Button",
 			size: "",
-			type: "",
-			toggle: false,
-			active: false,
-			disabled: false,
+			type: "",						
+			publish: {
+				toggle:{
+					value: false,
+					reflect: true
+				},
+				active:{
+					value: false,
+					reflect: true
+				},
+				disabled:{
+					value:false,
+					reflect: true
+				}
+			},
 
 			activeChanged: function(oldValue, newValue){
 				var button = this.$.button;
@@ -41,21 +52,21 @@
 				}
 			},
 			
-            disabledChanged: function(oldValue, newValue) {
-                var button = this.$.button;
-                if (newValue) addClass(button, "disabled");
-                else removeClass(button, "disabled");
-            },
+			disabledChanged: function(oldValue, newValue) {
+				var button = this.$.button;
+				if (newValue) addClass(button, "disabled");
+				else removeClass(button, "disabled");
+			},
 
 			onClick: function(){
-                if (!this.disabled) {
-                    if (this.toggle){
+				if (!this.disabled) {
+					if (this.toggle){
 						var button = this.$.button;
 						this.active = !this.active;
 					}else{
 						this.fire("clicked");//Could be pressed
 					}
-                }
+				}
 			}
 
 		});
