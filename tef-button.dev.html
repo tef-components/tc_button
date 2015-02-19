@@ -29,22 +29,29 @@
 			toggle: false,
 			active: false,
 			disabled: false,
+            disabledChanged: function(oldValue, newValue) {
+                var button = this.$.button;
+                if (newValue) addClass(button, "disabled");
+                else removeClass(button, "disabled");
+            },
 			onClick: function(){
-				if (this.toggle){
-					var button = this.$.button;					
-					
-					if (!this.active){						
-						addClass(button, "active");
-						this.active = true;
-						this.fire("activated");
-					}else{
-						removeClass(button, "active")
-						this.active = false;
-						this.fire("deactivated");
-					}
-				}else{
-					this.fire("clicked");//Could be pressed
-				}
+                if (!this.disabled) {
+                    if (this.toggle){
+                        var button = this.$.button;					
+
+                        if (!this.active){						
+                            addClass(button, "active");
+                            this.active = true;
+                            this.fire("activated");
+                        }else{
+                            removeClass(button, "active")
+                            this.active = false;
+                            this.fire("deactivated");
+                        }
+                    }else{
+                        this.fire("clicked");//Could be pressed
+                    }
+                }
 			}
 
 		});
