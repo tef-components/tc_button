@@ -1,0 +1,26 @@
+<link rel="import" href="bower_components/polymer/polymer.html">
+
+<polymer-element name="tef-core" attributes="brand">
+	<script>
+    (function() {
+      var brand = "telefonica";
+      
+      Polymer({
+        brand: brand,
+        /*brandChanged: function(oldValue, newValue){
+          brand = newValue;
+        },*/
+        /*attributeChanged: function (name, oldValue, newValue){
+          if (name = "brand")
+            brand = newValue;
+        },*/
+        ready: function() {
+          if (this.attributes.brand != null)
+            brand = this.brand;
+          else
+            this.brand = brand;
+         }
+      });
+    })();
+	</script>	
+</polymer-element>

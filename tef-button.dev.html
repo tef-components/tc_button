@@ -1,7 +1,8 @@
 <link rel="import" href="bower_components/polymer/polymer.html">
 
 <polymer-element name="tef-button" on-click="{{onClick}}" attributes ="label size type toggle active disabled">
-    <template>
+    <template>  
+    	<tef-core id="core"></tef-core>  	
 	    <link rel="stylesheet" href="bower_components/buttons/css/buttons.min.css">
 		<button id="button" class ="tef-button {{size}} {{type}}">
 		    {{label}}
@@ -65,6 +66,7 @@
 						this.active = !this.active;
 					}else{
 						this.fire("clicked");//Could be pressed
+						console.log(this.$.core.brand);
 					}
 				}
 			}
