@@ -9,20 +9,7 @@
 		</button>
 	</template>
 	<script>
-		function hasClass(ele,cls) {
-			return ele.className.match(new RegExp('(\\s|^)'+cls+'(\\s|$)'));
-		}
-		 
-		function addClass(ele,cls) {
-			if (!this.hasClass(ele,cls)) ele.className += " "+cls;
-		}
-		 
-		function removeClass(ele,cls) {
-			if (hasClass(ele,cls)) {
-		    	var reg = new RegExp(' (\\s|^)'+cls+'(\\s|$)');
-				ele.className=ele.className.replace(reg,' ');
-			}
-		}
+
 		Polymer({			
 			label: "Button",
 			size: "",
@@ -46,18 +33,18 @@
 			activeChanged: function(oldValue, newValue){
 				var button = this.$.button;
 				if (newValue){
-					addClass(button, "active");					
+					this.$.core.addClass(button, "active");					
 					this.fire("activated");
 				}else{
-					removeClass(button, "active")					
+					this.$.core.removeClass(button, "active")					
 					this.fire("deactivated");
 				}
 			},
 			
 			disabledChanged: function(oldValue, newValue) {
 				var button = this.$.button;
-				if (newValue) addClass(button, "disabled");
-				else removeClass(button, "disabled");
+				if (newValue) this.$.core.addClass(button, "disabled");
+				else this.$.core.removeClass(button, "disabled");
 			},
 
 			onClick: function(){
@@ -71,10 +58,17 @@
 				}
 			},
 			ready: function(){
-				this.$.core.addEventListener("ready", function(){
-					var href = "bower_components/buttons/css/buttons." + this.$.core.brand +".min.css";
+				var href;
+				if (this.$.core.isReady){//If core has already loaded and has the correct brand
+					href = "bower_components/buttons/css/buttons." + this.$.core.brand +".min.css";
 					this.addDinamicCss(href);
-				}.bind(this));
+				}
+				else{
+					this.$.core.addEventListener("ready", function(){//If not, we register it as a callback to the ready event
+						href = "bower_components/buttons/css/buttons." + this.$.core.brand +".min.css";
+						this.addDinamicCss(href);
+					}.bind(this));
+				}
 				
 			},
 			addDinamicCss: function(href){
@@ -83,7 +77,7 @@
 				link.rel = 'stylesheet';
 				link.href = href;
 				this.shadowRoot.appendChild(link);
-				this.element.convertSheetsToStyles(this.shadowRoot); 
+				this.element.convertSheetsToStyles(this.shadowRoot);				
 			}	
 		});
 	</script>	
