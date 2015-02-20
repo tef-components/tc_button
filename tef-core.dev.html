@@ -6,7 +6,12 @@
       var brand = "telefonica";
       
       Polymer({
-        brand: brand,
+        publish: {
+          brand:{
+            value: "telefonica",
+            reflect: true
+          }
+        },
         /*brandChanged: function(oldValue, newValue){
           brand = newValue;
         },*/
@@ -19,6 +24,7 @@
             brand = this.brand;
           else
             this.brand = brand;
+          this.fire('ready');
          }
       });
     })();

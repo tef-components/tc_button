@@ -2,8 +2,8 @@
 
 <polymer-element name="tef-button" on-click="{{onClick}}" attributes ="label size type toggle active disabled">
     <template>  
-    	<tef-core id="core"></tef-core>  	
-	    <link rel="stylesheet" href="bower_components/buttons/css/buttons.min.css">
+    	<tef-core id="core" ></tef-core>  	
+	    <link rel="stylesheet" href="bower_components/buttons/css/buttons.min.css">	    
 		<button id="button" class ="tef-button {{size}} {{type}}">
 		    {{label}}
 		</button>
@@ -26,7 +26,8 @@
 		Polymer({			
 			label: "Button",
 			size: "",
-			type: "",						
+			type: "",
+			brand :"",
 			publish: {
 				toggle:{
 					value: false,
@@ -65,12 +66,25 @@
 						var button = this.$.button;
 						this.active = !this.active;
 					}else{
-						this.fire("clicked");//Could be pressed
-						console.log(this.$.core.brand);
+						this.fire("clicked");//Could be pressed						
 					}
 				}
-			}
-
+			},
+			ready: function(){
+				this.$.core.addEventListener("ready", function(){
+					var href = "bower_components/buttons/css/buttons." + this.$.core.brand +".min.css";
+					this.addDinamicCss(href);
+				}.bind(this));
+				
+			},
+			addDinamicCss: function(href){
+				var link = document.createElement('link');
+				link.type = 'text/css';
+				link.rel = 'stylesheet';
+				link.href = href;
+				this.shadowRoot.appendChild(link);
+				this.element.convertSheetsToStyles(this.shadowRoot); 
+			}	
 		});
 	</script>	
 </polymer-element>
