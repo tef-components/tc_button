@@ -1,10 +1,10 @@
 <link rel="import" href="bower_components/polymer/polymer.html">
 
 <polymer-element name="tef-button" on-click="{{onClick}}" attributes ="label size type toggle active disabled">
-    <template>  
+    <template>
     	<tef-core id="core" ></tef-core>  	
 	    <link rel="stylesheet" href="bower_components/buttons/css/buttons.min.css">	    
-		<button id="button" class ="tef-button {{size}} {{type}}">
+	    <button id="button" class ="tef-button {{size}} {{type}}">
 		    {{label}}
 		</button>
 	</template>
@@ -13,8 +13,7 @@
 		Polymer({			
 			label: "Button",
 			size: "",
-			type: "",
-			brand :"",
+			type: "",			
 			publish: {
 				toggle:{
 					value: false,
@@ -60,12 +59,12 @@
 			ready: function(){
 				var href;
 				if (this.$.core.isReady){//If core has already loaded and has the correct brand
-					href = "bower_components/buttons/css/buttons." + this.$.core.brand +".min.css";
+					href = "bower_components/buttons/css/buttons." + this.$.core.brand +".css";
 					this.addDinamicCss(href);
 				}
 				else{
 					this.$.core.addEventListener("ready", function(){//If not, we register it as a callback to the ready event
-						href = "bower_components/buttons/css/buttons." + this.$.core.brand +".min.css";
+						href = "bower_components/buttons/css/buttons." + this.$.core.brand +".css";
 						this.addDinamicCss(href);
 					}.bind(this));
 				}
