@@ -2,9 +2,16 @@
 <meta http-equiv="Content-type" content="text/html;charset=UTF-8">
 <html>
     <head>
-        <script type="text/javascript" src="bower_components/webcomponentsjs/webcomponents.js"></script>        
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+        <meta name="viewport" content="width=device-width">
+        <title>TEF buttons demo</title>
+        
+        <script type="text/javascript" src="bower_components/webcomponentsjs/webcomponents.js"></script>   
+        
+        <link rel="import" href="tef-core.dev.html">
         <link rel="import" href="tef-button.dev.html">
-        <link rel="import" href="tef-core.dev.html">            
+        
         <style>
           body {
             font-family: Helvetica, Arial;
@@ -23,7 +30,7 @@
             font-size: 12px;
           }
           style {
-            display: block !important;
+            display: block;
             white-space: pre;
             margin-left: -65px;
             line-height: 25px;
@@ -31,99 +38,126 @@
         </style>
     </head>
     <body>
-        <tef-core brand="vivo"></tef-core>
-        <h1>TEF buttons - Web Components Version</h1>
+        <header>
+          <h1>TEF buttons</h1>
+          <span>Change theme</span>
+          <select id="themeSelector">
+            <option value="telefonica">Telefónica</option>
+            <option value="movistar">Movistar</option>
+            <option value="o2">O2</option>
+            <option value="vivo">Vivo</option>
+          </select>
+        </header>
+        
+        <tef-core brand="telefonica"></tef-core>
+        
         <h2>Default</h2>
         <div>
-           <tef-button marca="o2" size="small" label="Small"></tef-button>
-           <tef-button label="Default"></tef-button>
-           <tef-button size="large" label="Large"></tef-button>
+           <tef-button size="small">Small</tef-button>
+           <tef-button >Default</tef-button>
+           <tef-button size="large">Large</tef-button>
         </div>
         <code>
           <style>
-        <tef-button size="small" label="Small"></tef-button>
-        <tef-button label="Default"></tef-button>
-        <tef-button size="large" label="Large"></tef-button>
+           <tef-button size="small">Small</tef-button>
+           <tef-button >Default</tef-button>
+           <tef-button size="large">Large</tef-button>
           </style>
         </code>
+        
         <h2>Positive</h2>
         <div>
-           <tef-button size="small" type="positive" label="Small"></tef-button>
-           <tef-button type="positive" label="Default"></tef-button>
-           <tef-button size="large" type="positive" label="Large"></tef-button>
+           <tef-button type="positive" size="small">Small</tef-button>
+           <tef-button type="positive">Default</tef-button>
+           <tef-button type="positive" size="large">Large</tef-button>
         </div>
         <code>
           <style>
-       <tef-button size="small" type="positive" label="Small"></tef-button>
-       <tef-button type="positive" label="Default"></tef-button>
-       <tef-button size="large" type="positive" label="Large"></tef-button>
+           <tef-button type="positive" size="small">Small</tef-button>
+           <tef-button type="positive" >Default</tef-button>
+           <tef-button type="positive" size="large">Large</tef-button>
           </style>
         </code>
+        
         <h2>Negative</h2>
         <div>
-           <tef-button size="small" type="negative" label="Small"></tef-button>
-           <tef-button type="negative" label="Default"></tef-button>
-           <tef-button size="large" type="negative" label="Large"></tef-button>
+           <tef-button type="negative" size="small">Small</tef-button>
+           <tef-button type="negative" >Default</tef-button>
+           <tef-button type="negative" size="large">Large</tef-button>
         </div>
         <code>
           <style>
-       <tef-button size="small" type="negative" label="Small"></tef-button>
-       <tef-button type="negative" label="Default"></tef-button>
-       <tef-button size="large" type="negative" label="Large"></tef-button>
+           <tef-button type="negative" size="small">Small</tef-button>
+           <tef-button type="negative" >Default</tef-button>
+           <tef-button type="negative" size="large">Large</tef-button>
           </style>
         </code>
+        
         <h2>Subdued</h2>
         <div>
-           <tef-button size="small" type="subdued" label="Small"></tef-button>
-           <tef-button type="subdued" label="Default"></tef-button>
-           <tef-button size="large" type="subdued" label="Large"></tef-button>
+           <tef-button type="subdued" size="small">Small</tef-button>
+           <tef-button type="subdued" >Default</tef-button>
+           <tef-button type="subdued" size="large">Large</tef-button>
         </div>
         <code>
           <style>
-       <tef-button size="small" type="subdued" label="Small"></tef-button>
-       <tef-button type="subdued" label="Default"></tef-button>
-       <tef-button size="large" type="subdued" label="Large"></tef-button>
+           <tef-button type="subdued" size="small">Small</tef-button>
+           <tef-button type="subdued" >Default</tef-button>
+           <tef-button type="subdued" size="large">Large</tef-button>
           </style>
         </code>
+        
         <h2>Significant</h2>
         <div>
-           <tef-button size="small" type="significant" label="Small"></tef-button>
-           <tef-button type="significant" label="Default"></tef-button>
-           <tef-button size="large" type="significant" label="Large"></tef-button>
+           <tef-button type="significant" size="small">Small</tef-button>
+           <tef-button type="significant" >Default</tef-button>
+           <tef-button type="significant" size="large">Large</tef-button>
         </div>
         <code>
           <style>
-       <tef-button size="small" type="significant" label="Small"></tef-button>
-       <tef-button type="significant" label="Default"></tef-button>
-       <tef-button size="large" type="significant" label="Large"></tef-button>
+           <tef-button type="significant" size="small">Small</tef-button>
+           <tef-button type="significant" >Default</tef-button>
+           <tef-button type="significant" size="large">Large</tef-button>
           </style>
         </code>
+        
         <h2>Toggle</h2>
         <div>
-           <tef-button active toggle size="small" label="Small"></tef-button>
-           <tef-button toggle label="Default"></tef-button>
-           <tef-button toggle size="large" label="Large"></tef-button>
+           <tef-button toggle size="small">Small</tef-button>
+           <tef-button toggle >Default</tef-button>
+           <tef-button toggle size="large">Large</tef-button>
         </div>
         <code>
           <style>
-       <tef-button toggle size="small" label="Small">Hello</tef-button>
-       <tef-button toggle label="Default"></tef-button>
-       <tef-button toggle size="large" label="Large"></tef-button>
+           <tef-button toggle size="small">Small</tef-button>
+           <tef-button toggle >Default</tef-button>
+           <tef-button toggle size="large">Large</tef-button>
           </style>
         </code>
+        
         <h2>Disabled</h2>
         <div>
-           <tef-button disabled label="Default"></tef-button>
-           <tef-button disabled type="positive" label="Positive"></tef-button>
-           <tef-button disabled type="negative" label="Negative"></tef-button>
-           <tef-button disabled type="subdued" label="Subdued"></tef-button>
-           <tef-button disabled type="significant" label="Significant"></tef-button>           
+           <tef-button disabled >Default</tef-button>
+           <tef-button disabled type="positive">Positive</tef-button>
+           <tef-button disabled type="negative">Negative</tef-button>
+           <tef-button disabled type="subdued">Subdued</tef-button>
+           <tef-button disabled type="significant">Significant</tef-button>           
         </div>
         <code>
           <style>
-        <tef-button disabled label="Default"></tef-button>
+           <tef-button disabled >Default</tef-button>
+           <tef-button disabled type="positive">Positive</tef-button>
+           <tef-button disabled type="negative">Negative</tef-button>
+           <tef-button disabled type="subdued">Subdued</tef-button>
+           <tef-button disabled type="significant">Significant</tef-button>  
           </style>
         </code>
+        
+        <script>
+            var theme = document.getElementById('themeSelector');
+            theme.addEventListener('change', function() {
+                document.querySelector('tef-core').setAttribute('brand', theme.value);
+            });
+        </script>
     </body>
 </html>
-
