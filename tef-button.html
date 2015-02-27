@@ -1,18 +1,17 @@
-<link rel="import" href="bower_components/polymer/polymer.html">
-<link rel="import" href="bower_components/core-ajax/core-ajax.html">
-<link rel="import" href="bower_components/core-signals/core-signals.html">
+<link rel="import" href="../polymer/polymer.html">
+<link rel="import" href="../core-ajax/core-ajax.html">
+<link rel="import" href="../core-signals/core-signals.html">
 
 <polymer-element name="tef-button" attributes ="size type toggle active disabled" on-click="{{onClick}}">
     <template>
-	    <link rel="stylesheet" href="bower_components/buttons/css/buttons.min.css">
+        <core-signals on-core-signal-new-brand="{{newBrand}}"></core-signals>
+        <template if={{brand}}>
+            <core-ajax url="../buttons/css/buttons.{{brand}}.min.css" auto response="{{resp}}"></core-ajax>
+            <style>{{resp}}</style>
+        </template>
         <button id="button" class ="tef-button{{size ? ' '+size : ''}}{{type ? ' '+type : ''}}{{disabled ? ' disabled' : ''}}{{toggle && active && !disabled ?  ' active' : ''}}">
 		    <content></content>
         </button>
-        <core-signals on-core-signal-new-brand="{{newBrand}}"></core-signals>
-        <template if={{brand}}>
-            <core-ajax url="bower_components/buttons/css/buttons.{{brand}}.min.css" auto response="{{resp}}"></core-ajax>
-            <style>{{resp}}</style>
-        </template>
 	</template>
 	<script>
 		Polymer({ 
@@ -43,11 +42,9 @@
 			},
             
             newBrand: function(e, detail, sender) {
-                cpy = "";
-                if (detail != 'telefonica') {
-                    cpy = detail;
+                if (detail) {
+                    this.brand = detail;
                 }
-                this.brand = cpy;
             },
 
 			onClick: function(){
