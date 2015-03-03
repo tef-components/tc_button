@@ -6,7 +6,7 @@
     <template>
         <core-signals on-core-signal-new-brand="{{newBrand}}"></core-signals>
         <template if={{brand}}>
-            <core-ajax url="../buttons/css/buttons.{{brand}}.min.css" auto response="{{resp}}"></core-ajax>
+            <core-ajax auto url={{resolveCSSPath(brand)}} response="{{resp}}"></core-ajax>
             <style>{{resp}}</style>
         </template>
         <button id="button" class ="tef-button{{size ? ' '+size : ''}}{{type ? ' '+type : ''}}{{disabled ? ' disabled' : ''}}{{toggle && active && !disabled ?  ' active' : ''}}">
@@ -56,6 +56,10 @@
 					}
 				}
 			},
+            
+            resolveCSSPath: function(e) {
+                return this.resolvePath('bower_components/buttons/css/buttons.'+ e + '.min.css');
+            }
             
 		});
 	</script>	
