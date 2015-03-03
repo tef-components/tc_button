@@ -1,11 +1,11 @@
 {
   "name": "tef-button",
   "version": "0.1.1",
-  "homepage": "https://github.com/tef-components/tef-buttons",
+  "homepage": "https://github.com/tef-components/tef-button",
   "authors": [
     "the TEF components team"
   ],
-  "description": "TEF components - tef-buttons",
+  "description": "TEF components - tef-button",
   "main": "index.html",
   "license": "MIT",
   "ignore": [
