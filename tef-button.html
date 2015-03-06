@@ -2,65 +2,112 @@
 <link rel="import" href="../core-ajax/core-ajax.html">
 <link rel="import" href="../core-signals/core-signals.html">
 
-<polymer-element name="tef-button" attributes ="size type toggle active disabled" on-click="{{onClick}}">
+<link rel="stylesheet" href="bower_components/icons/icons.css">
+
+<polymer-element name="tef-button" attributes ="size type disabled toggle active" on-click="{{onClick}}">
     <template>
+        <style>
+            .tef-button ::content [data-icon] + span,
+            .tef-button ::content span + [data-icon] {
+                margin-left: 6px;
+            }
+            .tef-button ::content [data-icon]:before {
+                position: relative;
+                font-size: 24px;
+                line-height: 0;
+                top: 5px;
+            }
+            .tef-button.small ::content [data-icon]:before {
+                font-size: 20px;
+            }
+            .tef-button.large ::content [data-icon]:before {
+                font-size: 32px;
+            }
+        </style>
         <core-signals on-core-signal-new-brand="{{newBrand}}"></core-signals>
-        <template if={{brand}}>
-            <core-ajax auto url={{resolveCSSPath(brand)}} response="{{resp}}"></core-ajax>
+        <template if="{{brand}}">
+            <core-ajax auto url="{{resolveCSSPath(brand)}}" response="{{resp}}"></core-ajax>
             <style>{{resp}}</style>
         </template>
-        <button id="button" class ="tef-button{{size ? ' '+size : ''}}{{type ? ' '+type : ''}}{{disabled ? ' disabled' : ''}}{{toggle && active && !disabled ?  ' active' : ''}}">
-		    <content></content>
+        <button id="button" class ="{{resolveClass(active)}}">
+            <content></content>
         </button>
-	</template>
-	<script>
-		Polymer({ 
+    </template>
+    <script>
+        Polymer({ 
             brand : "",
             
-			publish: {
-				toggle: {
-					value: false,
-					reflect: true
-				},
-				active: {
-					value: false,
-					reflect: true
-				},
-				disabled: {
-					value: false,
-					reflect: true
-				}
-			},
+            publish: {
+                active: {
+                    value: false,
+                    reflect: true
+                },
+                disabled: {
+                    value: false,
+                    reflect: true
+                },
+                toggle: {
+                    value: false,
+                    reflect: true
+                }
+            },
             
-            activeChanged: function(oldValue, newValue){
-				var button = this.$.button;
-				if (newValue){					
-					this.fire("activated");
-				} else {				
-					this.fire("deactivated");
-				}
-			},
+            activeChanged: function(oldValue, newValue) {
+                if (newValue) {
+                    this.active = newValue;
+                }
+            },
+            
+            disabledChanged: function(oldValue, newValue) {
+                if (newValue) {
+                    this.disabled = newValue;
+                }
+            },
+            
+            toggleChanged: function(oldValue, newValue) {
+                if (newValue) {
+                    this.toggle = newValue;
+                }
+            },
+            
+            onClick: function() {
+                if (!this.disabled) {
+                    if (this.toggle) {
+                        this.active = !this.active;
+                        if (this.active) {
+                            this.fire('inside-click', {msg: 'toggle-on'});
+                        } else {
+                            this.fire('inside-click', {msg: 'toggle-off'});
+                        }
+                    } else {
+                        this.fire('inside-click', {msg: 'clicked'});
+                    }
+                }
+            },
             
             newBrand: function(e, detail, sender) {
                 if (detail) {
                     this.brand = detail;
                 }
             },
-
-			onClick: function(){
-				if (!this.disabled) {
-					if (this.toggle){
-						this.active = !this.active;
-					} else {
-						this.fire("clicked"); //Could be pressed						
-					}
-				}
-			},
             
-            resolveCSSPath: function(e) {
-                return this.resolvePath('../buttons/css/buttons.'+ e + '.min.css');
+            resolveCSSPath: function(value) {
+                return this.resolvePath('../buttons/css/buttons.'+ this.brand + '.min.css');
+            },
+            
+            resolveClass: function(value) {
+                var localClass = 'tef-button';
+                if (this.size) localClass += ' ' + this.size;
+                if (this.type) localClass += ' ' + this.type;
+                if (this.disabled) {
+                    localClass += ' disabled';
+                } else {
+                    if (this.toggle && this.active)
+                        localClass += ' active';
+                }
+                return localClass;
             }
             
-		});
-	</script>	
+        });
+    </script>	
 </polymer-element>

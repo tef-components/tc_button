@@ -1,6 +1,6 @@
 {
   "name": "tef-button",
-  "version": "0.1.1",
+  "version": "0.1.2",
   "homepage": "https://github.com/tef-components/tef-button",
   "authors": [
     "the TEF components team"
@@ -19,9 +19,9 @@
   ],
   "dependencies": {
     "polymer": "Polymer/polymer#^0.5",
-    "core-ajax": "Polymer/core-ajax",
-    "core-signals": "Polymer/core-signals",
-    "buttons": "tef-components/buttons", 
-    "tef-core": "tef-components/tef-core"
+    "core-ajax": "Polymer/core-ajax#^0.5",
+    "core-signals": "Polymer/core-signals#^0.5",
+    "buttons": "tef-components/buttons#^0.1.11", 
+    "tef-core": "tef-components/tef-core#^0.1.3"
   }
 }
