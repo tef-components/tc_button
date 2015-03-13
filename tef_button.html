@@ -1,42 +1,16 @@
-<link rel="import" href="../polymer/polymer.html">
-<link rel="import" href="../core-ajax/core-ajax.html">
-<link rel="import" href="../core-signals/core-signals.html">
-
-<link rel="stylesheet" href="../icons/icons.css">
+<<link rel="import" href="../polymer/polymer.html">
+<link rel="import" href="../core-style/core-style.html">
+<link rel="import" href="../buttons/tef_button.html">
 
 <polymer-element name="tef-button" attributes ="size type disabled toggle active" on-click="{{onClick}}">
     <template>
-        <style>
-            .tef-button ::content [data-icon] + span,
-            .tef-button ::content span + [data-icon] {
-                margin-left: 6px;
-            }
-            .tef-button ::content [data-icon]:before {
-                position: relative;
-                font-size: 24px;
-                line-height: 0;
-                top: 5px;
-            }
-            .tef-button.small ::content [data-icon]:before {
-                font-size: 20px;
-            }
-            .tef-button.large ::content [data-icon]:before {
-                font-size: 32px;
-            }
-        </style>
-        <core-signals on-core-signal-new-brand="{{newBrand}}"></core-signals>
-        <template if="{{brand}}">
-            <core-ajax auto url="{{resolveCSSPath(brand)}}" response="{{resp}}"></core-ajax>
-            <style>{{resp}}</style>
-        </template>
-        <button id="button" class ="{{resolveClass(active)}}">
+        <core-style ref="tef-button"></core-style>
+        <div id="button" class="{{resolveClass(active)}}">
             <content></content>
-        </button>
+        </div>
     </template>
     <script>
-        Polymer({ 
-            brand : "",
-            
+        Polymer({
             publish: {
                 active: {
                     value: false,
@@ -51,25 +25,25 @@
                     reflect: true
                 }
             },
-            
+
             activeChanged: function(oldValue, newValue) {
                 if (newValue) {
                     this.active = newValue;
                 }
             },
-            
+
             disabledChanged: function(oldValue, newValue) {
                 if (newValue) {
                     this.disabled = newValue;
                 }
             },
-            
+
             toggleChanged: function(oldValue, newValue) {
                 if (newValue) {
                     this.toggle = newValue;
                 }
             },
-            
+
             onClick: function() {
                 if (!this.disabled) {
                     if (this.toggle) {
@@ -84,17 +58,7 @@
                     }
                 }
             },
-            
-            newBrand: function(e, detail, sender) {
-                if (detail) {
-                    this.brand = detail;
-                }
-            },
-            
-            resolveCSSPath: function(value) {
-                return this.resolvePath('../buttons/css/buttons.'+ this.brand + '.min.css');
-            },
-            
+
             resolveClass: function(value) {
                 var localClass = 'tef-button';
                 if (this.size) localClass += ' ' + this.size;
@@ -107,7 +71,7 @@
                 }
                 return localClass;
             }
-            
+
         });
-    </script>	
+    </script>
 </polymer-element>
