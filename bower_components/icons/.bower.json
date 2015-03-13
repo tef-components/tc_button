@@ -1,0 +1,32 @@
+{
+  "name": "icons",
+  "version": "0.1.10",
+  "homepage": "https://github.com/tef-components/icons",
+  "authors": [
+    "the TEF components team"
+  ],
+  "description": "TEF components - icons",
+  "main": "icons.html",
+  "license": "MIT",
+  "ignore": [
+    "bower.json",
+    ".gitignore",
+    "README.md",
+    "Gruntfile.js",
+    "package.json",
+    "node_modules",
+    "bower_components",
+    "source",
+    "templates",
+    "fonts"
+  ],
+  "_release": "0.1.10",
+  "_resolution": {
+    "type": "version",
+    "tag": "v0.1.10",
+    "commit": "d127ac49121906f8a85f04c7976cb7e236ec0ac2"
+  },
+  "_source": "git://github.com/tef-components/icons.git",
+  "_target": "*",
+  "_originalSource": "tef-components/icons"
+}
