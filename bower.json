@@ -1,6 +1,6 @@
 {
   "name": "tef_button",
-  "version": "0.2.2",
+  "version": "0.2.3",
   "homepage": "https://github.com/tef-components/tef_button",
   "authors": [
     "the TEF components team"
@@ -19,6 +19,8 @@
   ],
   "dependencies": {
     "polymer": "Polymer/polymer#^0.5",
-    "buttons": "tef-components/buttons#^0.1.11"
+    "buttons": "tef-components/buttons#master",
+    "webcomponentsjs": "~0.5.5",
+    "core-style": "Polymer/core-style#~0.5.5"
   }
 }
