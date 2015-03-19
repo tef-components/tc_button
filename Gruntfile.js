@@ -2,6 +2,22 @@ module.exports = function(grunt) {
   require('jit-grunt')(grunt);
 
   grunt.initConfig({
+    less: {
+      default: {
+        files: {
+          "templates/tef.button.css": "less/tef.button.less"
+        }
+      }
+    },
+
+    includes: {
+      files: {
+        cwd: 'templates/',
+        src: '**/*.html',
+        dest: ''
+      }
+    },
+
     bump: {
       // upgrade release and push to master
       options : {
@@ -29,7 +45,14 @@ module.exports = function(grunt) {
     }
   });
 
+  grunt.registerTask('default', [
+    'less',
+    'includes',
+  ]);
+
   grunt.registerTask('release', [
+    'less',
+    'includes',
     'exec:add',
     'bump',
     'exec:pages'
