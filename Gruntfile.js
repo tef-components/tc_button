@@ -2,54 +2,36 @@ module.exports = function(grunt) {
   require('jit-grunt')(grunt);
 
   grunt.initConfig({
-    less: {
-      development: {
-        files: {
-          "css/buttons.css": "less/buttons.less",
-          "css/tef-button.css": "less/tef-button.less"
-        }
-      },
-      production: {
-        options: {
-          compress: true,
-          yuicompress: true,
-          optimization: 2
-        },
-        files: {
-          "css/buttons.min.css": "less/buttons.less"
-        }
+    bump: {
+      // upgrade release and push to master
+      options : {
+        files: ['bower.json'],
+        commitFiles: ["-a"],
+        pushTo: 'origin'
       }
     },
 
-    watch: {
-      styles: {
-        files: ['less/**/*.less'],
-        tasks: ['less', 'autoprefixer'],
-        options: {
-          nospawn: true,
-          livereload: true
-        }
-      }
-    },
+    exec: {
+      // add new files before commiting
+      add: {
+        command: 'git add .'
+      },
 
-    autoprefixer: {
-      options: {
-        browsers: ['last 5 versions']
-      },
-      dist: {
-        src: 'css/*.css'
-      },
-    },
-
-    template: {
-      options: {
-          // Task-specific options go here
-      },
-      files: {
-        'dist/post.html': ['src/post.html.tpl']
+      // push to gh-pages branch
+      pages: {
+        command: [
+          'git checkout gh-pages',
+          'git pull origin master',
+          'git push origin gh-pages',
+          'git checkout master'
+        ].join('&&')
       }
     }
   });
 
-  grunt.registerTask('default', ['less','autoprefixer','watch','template']);
+  grunt.registerTask('release', [
+    'exec:add',
+    'bump',
+    'exec:pages'
+  ]);
 };
