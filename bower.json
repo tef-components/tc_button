@@ -18,9 +18,9 @@
     "bower_components"
   ],
   "dependencies": {
-    "polymer": "Polymer/polymer#^0.5",
+    "polymer": "Polymer/polymer#^0.5.5",
     "buttons": "tef-components/buttons#master",
-    "webcomponentsjs": "~0.5.5",
-    "core-style": "Polymer/core-style#~0.5.5"
+    "webcomponentsjs": "^0.5.5",
+    "core-style": "Polymer/core-style#^0.5.5"
   }
 }

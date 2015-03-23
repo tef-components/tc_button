@@ -19,11 +19,11 @@
   "dependencies": {
     "icons": "tef-components/icons"
   },
-  "_release": "9e3a752a69",
+  "_release": "554c602578",
   "_resolution": {
     "type": "branch",
     "branch": "master",
-    "commit": "9e3a752a692a8cf3e1bc86313070eeec7ba6a3b4"
+    "commit": "554c602578cda800160b393f95830f70f2000c72"
   },
   "_source": "git://github.com/tef-components/buttons.git",
   "_target": "master",
