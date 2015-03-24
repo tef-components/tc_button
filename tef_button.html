@@ -5,7 +5,7 @@
 <polymer-element name="tef-button" attributes ="href size type disabled toggle active" on-click="{{onClick}}">
     <template>
         <core-style ref="tef-button"></core-style>
-        <a href="{{href}}" class="{{resolveClass(active)}}">
+        <a href="{{href}}" class="{{resolveClass(size, type, disabled, active)}}">
             <content></content>
         </a>
     </template>
@@ -22,29 +22,11 @@
                 },
                 href: {
                     value: "javascript:void(0)",
-                    reflect: true
+                    reflect: false
                 },
                 toggle: {
                     value: false,
                     reflect: true
-                }
-            },
-
-            activeChanged: function(oldValue, newValue) {
-                if (newValue) {
-                    this.active = newValue;
-                }
-            },
-
-            disabledChanged: function(oldValue, newValue) {
-                if (newValue) {
-                    this.disabled = newValue;
-                }
-            },
-
-            toggleChanged: function(oldValue, newValue) {
-                if (newValue) {
-                    this.toggle = newValue;
                 }
             },
 
@@ -53,17 +35,17 @@
                     if (this.toggle) {
                         this.active = !this.active;
                         if (this.active) {
-                            this.fire('inside-click', {msg: 'toggle-on'});
+                            this.fire('toggle-on');
                         } else {
-                            this.fire('inside-click', {msg: 'toggle-off'});
+                            this.fire('toggle-off');
                         }
                     } else {
-                        this.fire('inside-click', {msg: 'clicked'});
+                        this.fire('clicked');
                     }
                 }
             },
 
-            resolveClass: function(value) {
+            resolveClass: function(size, type, disabled, active) {
                 var localClass = 'tef-button';
                 if (this.size) localClass += ' ' + this.size;
                 if (this.type) localClass += ' ' + this.type;

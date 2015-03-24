@@ -230,7 +230,7 @@
     <script>
       var theme = document.getElementById('themeSelector');
       theme.addEventListener('change', function() {
-        linkComps = document.getElementById('themeComps');
+        var linkComps = document.getElementById('themeComps');
         linkComps.href = '../theme_'
           + theme.value + '/css/components.'
           + theme.value + '.css';

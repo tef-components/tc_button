@@ -14,7 +14,6 @@ button::-moz-focus-inner {
   display: inline-block;
   vertical-align: middle;
   min-width: 35px;
-  max-width: 200px;
   background-image: none;
   background-color: @color;
   color: @text;
@@ -128,12 +127,5 @@ button::-moz-focus-inner {
   }
 
   .colors-loop();
-
-  // disabled
-  &[disabled],
-  &.disabled {
-    opacity: 0.4;
-    pointer-events: none;
-  }
 }
 
