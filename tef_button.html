@@ -1,10 +1,8 @@
 <link rel="import" href="bower_components/polymer/polymer.html">
 <link rel="import" href="bower_components/core-style/core-style.html">
-<link rel="import" href="tef_button_styles.html">
 
-<polymer-element name="tef-button" attributes ="href size type disabled toggle active" on-click="{{onClick}}">
+<polymer-element name="tef-button" attributes ="href block size type disabled toggle active" on-click="{{onClick}}">
     <template>
-        <core-style ref="tef-button"></core-style>
         <a href="{{href}}" class="{{resolveClass(size, type, disabled, active)}}">
             <content></content>
         </a>
@@ -13,6 +11,10 @@
         Polymer({
             publish: {
                 active: {
+                    value: false,
+                    reflect: true
+                },
+                block: {
                     value: false,
                     reflect: true
                 },
@@ -55,6 +57,7 @@
                     if (this.toggle && this.active)
                         localClass += ' active';
                 }
+                if (this.block) localClass += ' block';
                 return localClass;
             }
 

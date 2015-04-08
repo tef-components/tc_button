@@ -73,8 +73,8 @@ module.exports = function(grunt) {
   ]);
 
   grunt.registerTask('release', [
-    'less',
-    'includes',
+    //'less',
+    //'includes',
     'exec:add',
     'prompt',
     'exec:message',
