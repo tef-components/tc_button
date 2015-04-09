@@ -19,7 +19,7 @@
     </script>
 
     <link rel="import" href="tef_button.html">
-    <link id="themeCSS" rel="stylesheet" href="../theme_telefonica/css/components.telefonica.css">    
+    <link id="themeCT" rel="stylesheet" href="../theme_telefonica/css/components.telefonica.css">    
     <link id="themeWC" rel="stylesheet" href="../theme_telefonica/css/web_components/tef_button.css">
     <!--<script id="themeVars" src="../theme_telefonica/theme.telefonica.js"></script>-->
 
@@ -47,7 +47,7 @@
 
   <body unresolved>
     <div class="tef-wrapper">
-      <header data-columns="2" data-columns-xs="1">
+      <header columns="2 xs1">
         <h1>tef-button</h1>
         <div>
           <label>Change theme</label>
@@ -263,13 +263,13 @@
     <script>
       var theme = document.getElementById('themeSelector');
       theme.addEventListener('change', function() {
-        var themeCSS = document.getElementById('themeCSS');
-        themeCSS.href = '../theme_'
+        var themeCT = document.getElementById('themeCT');
+        themeCT.href = '../theme_'
           + theme.value + '/css/components.'
           + theme.value + '.css';
         var themeWC = document.getElementById('themeWC');
         themeWC.href = '../theme_'
-            + theme.value + '/css/web_components/tef_button.css'
+          + theme.value + '/css/web_components/tef_button.css'
       });
     </script>
   </body>
