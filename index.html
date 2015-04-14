@@ -19,9 +19,8 @@
     </script>
 
     <link rel="import" href="tef_button.html">
-    <link id="themeCT" rel="stylesheet" href="../theme_telefonica/css/components.telefonica.css">    
-    <link id="themeWC" rel="stylesheet" href="../theme_telefonica/css/web_components/tef_button.css">
-    <!--<script id="themeVars" src="../theme_telefonica/theme.telefonica.js"></script>-->
+    <link id="themeComps" rel="stylesheet" href="../theme_telefonica/css/components.telefonica.css">
+    <script id="themeVars" src="../theme_telefonica/theme.telefonica.js"></script>
 
     <style>
       header[data-columns] { padding-top: 30px; }
@@ -263,13 +262,17 @@
     <script>
       var theme = document.getElementById('themeSelector');
       theme.addEventListener('change', function() {
-        var themeCT = document.getElementById('themeCT');
-        themeCT.href = '../theme_'
+        var linkComps = document.getElementById('themeComps');
+        linkComps.href = '../theme_'
           + theme.value + '/css/components.'
           + theme.value + '.css';
-        var themeWC = document.getElementById('themeWC');
-        themeWC.href = '../theme_'
-          + theme.value + '/css/web_components/tef_button.css'
+        var linkVars = document.createElement('script');
+        linkVars.id = "themeVars";
+        linkVars.src = '../theme_'
+          + theme.value + '/theme.'
+          + theme.value + '.js';
+        document.head.removeChild(document.getElementById("themeVars"));
+        document.head.appendChild(linkVars);
       });
     </script>
   </body>
