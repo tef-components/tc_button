@@ -5,7 +5,7 @@
 <polymer-element name="tef-button" attributes ="href block size type disabled toggle active" on-click="{{onClick}}">
     <template>
         <core-style ref="tef-button"></core-style>
-        <a href="{{href}}" class="{{resolveClass(size, type, disabled, active)}}">
+        <a href="{{href}}" class="{{resolveClass()}}">
             <content></content>
         </a>
     </template>
@@ -49,7 +49,7 @@
                 }
             },
 
-            resolveClass: function(size, type, disabled, active) {
+            resolveClass: function(e) {
                 var localClass = 'tef-button';
                 if (this.size) localClass += ' ' + this.size;
                 if (this.type) localClass += ' ' + this.type;
