@@ -5,7 +5,7 @@
 <polymer-element name="tef-button" attributes ="href block size type disabled toggle active" on-click="{{onClick}}">
     <template>
         <core-style ref="tef-button"></core-style>
-        <a href="{{href}}" class="{{resolveClass(active)}}">
+        <a href="{{href}}" class="{{resolveClass(size,type,disabled,active)}}">
             <content></content>
         </a>
     </template>
