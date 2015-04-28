@@ -41,6 +41,13 @@
         overflow-y: auto;
         border-radius: 4px;
       }
+      .output {
+        color: grey;
+        border: 1px solid rgb(205, 205, 205);
+        border-left: none;
+        border-right: none;
+        padding: 10px;
+      }
     </style>
   </head>
 
@@ -258,7 +265,31 @@
         </style>
       </code>
       
+      <h2>Events</h2>
+      <p class="output" id="testMsg">n/a</p>
+      <tef-button id="testEventSimple">simple</tef-button>
+      <tef-button id="testEventToggle" toggle>toggle</tef-button>
+      <code>
+        <style>
+      var buttonSimple = document.getElementById('testEventSimple');
+      var buttonToggle = document.getElementById('testEventToggle');
+      
+      buttonSimple.addEventListener("clicked", function() {
+        var msg = document.getElementById('testMsg');
+        msg.innerHTML = "the button was clicked!";
+      });
+      buttonToggle.addEventListener("toggle-on", function() {
+        var msg = document.getElementById('testMsg');
+        msg.innerHTML = "the button was toggled on!";
+      });
+      buttonToggle.addEventListener("toggle-off", function() {
+        var msg = document.getElementById('testMsg');
+        msg.innerHTML = "the button was toggled off!";
+      });
+        </style>
+      </code>
     </div>
+    
     <script>
       var theme = document.getElementById('themeSelector');
       theme.addEventListener('change', function() {
@@ -273,6 +304,20 @@
           + theme.value + '.js';
         document.head.removeChild(document.getElementById("themeVars"));
         document.head.appendChild(linkVars);
+      });
+      var buttonSimple = document.getElementById('testEventSimple');
+      buttonSimple.addEventListener("clicked", function() {
+        var msg = document.getElementById('testMsg');
+        msg.innerHTML = "the button was clicked!";
+      });
+      var buttonToggle = document.getElementById('testEventToggle');
+      buttonToggle.addEventListener("toggle-on", function() {
+        var msg = document.getElementById('testMsg');
+        msg.innerHTML = "the button was toggled on!";
+      });
+      buttonToggle.addEventListener("toggle-off", function() {
+        var msg = document.getElementById('testMsg');
+        msg.innerHTML = "the button was toggled off!";
       });
     </script>
   </body>
