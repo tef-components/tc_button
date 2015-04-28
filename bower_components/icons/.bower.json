@@ -1,6 +1,6 @@
 {
   "name": "icons",
-  "version": "0.1.19",
+  "version": "0.1.21",
   "homepage": "https://github.com/tef-components/icons",
   "authors": [
     "the TEF components team"
@@ -20,11 +20,11 @@
     "templates",
     "fonts"
   ],
-  "_release": "0.1.19",
+  "_release": "0.1.21",
   "_resolution": {
     "type": "version",
-    "tag": "v0.1.19",
-    "commit": "a5d87c6bc70fae629955ab53c36a8ac0a21a0fec"
+    "tag": "v0.1.21",
+    "commit": "3cb3971fa705462760386dc1e2bb953f6a7e4d6a"
   },
   "_source": "git://github.com/tef-components/icons.git",
   "_target": "*",
